@@ -1,0 +1,2 @@
+GET         /foo        sk.ygor.stackoverflow.q53218130.ApplicationController.foo
+POST        /bar        sk.ygor.stackoverflow.q53218130.ApplicationController.bar
