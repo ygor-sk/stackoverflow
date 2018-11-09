@@ -25,10 +25,8 @@ public class ItemService {
         return userRepository.findById(userId)
                 .map(user -> {
                     Item entity = new Item(
-                            itemCreate.getContent(),
-                            itemCreate.getImpact(),
-                            itemCreate.getEase(),
-                            itemCreate.getConfidence(),
+                            itemCreate.getDescription(),
+                            itemCreate.getCount(),
                             System.currentTimeMillis(),
                             user
                     );
@@ -47,10 +45,8 @@ public class ItemService {
     public Optional<Item> updateItem(long loggedUserId, long itemId, ItemCreate itemUpdate) {
         return getItem(loggedUserId, itemId)
                 .map(item -> {
-                    item.setContent(itemUpdate.getContent());
-                    item.setImpact(itemUpdate.getImpact());
-                    item.setEase(itemUpdate.getEase());
-                    item.setConfidence(itemUpdate.getConfidence());
+                    item.setDescription(itemUpdate.getDescription());
+                    item.setCount(itemUpdate.getCount());
                     return itemRepository.save(item);
                 });
     }

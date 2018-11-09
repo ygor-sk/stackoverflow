@@ -4,8 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
-import java.math.MathContext;
 
 @Entity
 public class Item {
@@ -16,16 +14,10 @@ public class Item {
 
     @SuppressWarnings("DefaultAnnotationParam")
     @Column(nullable = false, length = 255)
-    private String content;
+    private String description;
 
     @Column(nullable = false)
-    private Integer impact;
-
-    @Column(nullable = false)
-    private Integer ease;
-
-    @Column(nullable = false)
-    private Integer confidence;
+    private Integer count;
 
     @Column(nullable = false, name = "created_at")
     @JsonProperty("created_at")
@@ -38,19 +30,11 @@ public class Item {
     public Item() {
     }
 
-    public Item(String content, Integer impact, Integer ease, Integer confidence, Long createdAt, User user) {
-        this.content = content;
-        this.impact = impact;
-        this.ease = ease;
-        this.confidence = confidence;
+    public Item(String description, Integer count, Long createdAt, User user) {
+        this.description = description;
+        this.count = count;
         this.createdAt = createdAt;
         this.user = user;
-    }
-
-    @JsonProperty("average_score")
-    public BigDecimal getAverageScore() {
-        return new BigDecimal(impact + ease + confidence)
-                .divide(new BigDecimal(3), MathContext.DECIMAL64);
     }
 
     public long getId() {
@@ -61,36 +45,20 @@ public class Item {
         this.id = id;
     }
 
-    public String getContent() {
-        return content;
+    public String getDescription() {
+        return description;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public Integer getImpact() {
-        return impact;
+    public Integer getCount() {
+        return count;
     }
 
-    public void setImpact(Integer impact) {
-        this.impact = impact;
-    }
-
-    public Integer getEase() {
-        return ease;
-    }
-
-    public void setEase(Integer ease) {
-        this.ease = ease;
-    }
-
-    public Integer getConfidence() {
-        return confidence;
-    }
-
-    public void setConfidence(Integer confidence) {
-        this.confidence = confidence;
+    public void setCount(Integer count) {
+        this.count = count;
     }
 
     public Long getCreatedAt() {
@@ -112,11 +80,8 @@ public class Item {
     @Override public String toString() {
         return "Item{" +
                 "id=" + id +
-                ", content='" + content + '\'' +
-                ", impact=" + impact +
-                ", ease=" + ease +
-                ", confidence=" + confidence +
-                ", average_score=" + getAverageScore() +
+                ", description='" + description + '\'' +
+                ", count=" + count +
                 ", createdAt=" + createdAt +
                 ", user=" + user.getId() +
                 '}';
