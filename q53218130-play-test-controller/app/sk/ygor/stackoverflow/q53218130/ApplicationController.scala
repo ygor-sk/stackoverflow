@@ -1,11 +1,9 @@
 package sk.ygor.stackoverflow.q53218130
 
 import javax.inject.Inject
-import play.api.Configuration
 import play.api.mvc._
 
-class ApplicationController @Inject()(configuration: Configuration,
-                                      controllerComponents: ControllerComponents)
+class ApplicationController @Inject()(controllerComponents: ControllerComponents)
   extends AbstractController(controllerComponents) {
 
   def foo(): Action[AnyContent] = Action { request =>
