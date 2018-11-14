@@ -17,12 +17,14 @@ public class Main {
         BeanUtilsBean beanUtilsBean = new BeanUtilsBean(convertUtilsBean, new PropertyUtilsBean());
 
         UserDto dto = new UserDto("42", "2018-11-14");
-        System.out.println("dto = " + dto);
+        System.out.println("dto.getUserId() = " + dto.getUserId());
+        System.out.println("dto.getDob() = " + dto.getDob());
 
         UserModel model = new UserModel();
         beanUtilsBean.copyProperties(model, dto);
 
-        System.out.println("model = " + model);
+        System.out.println("model.getUserId() = " + model.getUserId());
+        System.out.println("model.getDob() = " + model.getDob());
     }
 
 }
