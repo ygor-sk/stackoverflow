@@ -1,0 +1,1 @@
+window.alert("My name is main.js");

@@ -1,0 +1,2 @@
+GET         /foo                 sk.ygor.stackoverflow.q53319493.controller.ApplicationController.foo
+GET         /assets/*file        controllers.Assets.versioned(file)
