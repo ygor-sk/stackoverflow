@@ -1,7 +1,7 @@
 package sk.ygor.stackoverflow.q53326545.macros
 
 import scala.language.experimental.macros
-import scala.reflect.macros.whitebox
+import scala.reflect.macros.blackbox
 
 object ExampleMacro {
 
@@ -9,7 +9,7 @@ object ExampleMacro {
 
   def methodName(param: Any): String = macro debugParameters_Impl
 
-  def debugParameters_Impl(c: whitebox.Context)(param: c.Expr[Any]): c.Expr[String] = {
+  def debugParameters_Impl(c: blackbox.Context)(param: c.Expr[Any]): c.Expr[String] = {
     import c.universe._
 
     param.tree match {

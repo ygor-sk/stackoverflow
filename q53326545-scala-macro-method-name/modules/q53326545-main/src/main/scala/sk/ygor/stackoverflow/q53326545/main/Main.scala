@@ -1,7 +1,5 @@
 package sk.ygor.stackoverflow.q53326545.main
 
-import sk.ygor.stackoverflow.q53326545.macros.ExampleMacro.methodName
-
 object Main {
 
   def main(args: Array[String]): Unit = {
@@ -17,7 +15,9 @@ object Main {
     val a = new Abc()
     val x = X()
 
-    println(methodName(Main.main(null)))
+    import sk.ygor.stackoverflow.q53326545.macros.ExampleMacro.methodName
+
+    println(methodName(Main.main(Array("foo", "bar"))))
     println(methodName(a.met()))
     println(methodName(new Abc().met()))
     println(methodName(X()))
