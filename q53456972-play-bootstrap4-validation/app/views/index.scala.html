@@ -1,0 +1,11 @@
+@(form: Form[forms.UserLogin])(implicit messagesProvider: MessagesProvider)
+
+@main("Welcome to Play") {
+  <h1>Welcome to Play!</h1>
+
+  @b4.inline.form(routes.HomeController.login()) { implicit ifc =>
+    @b4.email( form("email"), '_hiddenLabel -> "Email", 'placeholder -> "your email address", 'required -> true)
+    @b4.password( form("password"), '_hiddenLabel -> "Password", 'placeholder -> "your password")
+    @b4.submit('class -> "btn btn-light btn-outline-dark"){ Login }
+  }
+}
