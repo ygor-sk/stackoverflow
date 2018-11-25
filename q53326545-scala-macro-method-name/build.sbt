@@ -24,6 +24,6 @@ lazy val q53326545Macro = (project in file("modules/q53326545-macro"))
   .settings(
     name := "q53326545-macro",
     commonSettings,
-    libraryDependencies += "org.scala-lang" % "scala-reflect" % "2.12.7",
+    libraryDependencies += "org.scala-lang" % "scala-reflect" % scalaVersion.value,
   )
 
