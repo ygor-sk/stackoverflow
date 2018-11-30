@@ -20,7 +20,7 @@ public class MyController {
 
     @RequestMapping
     public @ResponseBody Iterable<MyEntity> getAndLogRequest(HttpServletRequest request) {
-        myEntityRepository.save(new MyEntity(String.format("%s %s: %s %s",
+        myEntityRepository.save(new MyEntity(String.format("%s: %s: %s %s",
                 LocalDateTime.now().toString(), request.getRemoteAddr(), request.getMethod(), request.getRequestURI()
         )));
         return myEntityRepository.findAll();
