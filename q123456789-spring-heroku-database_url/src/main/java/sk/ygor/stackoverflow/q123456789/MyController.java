@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
+import java.util.Map;
 
 @Controller
 public class MyController {
@@ -18,11 +19,16 @@ public class MyController {
         this.myEntityRepository = myEntityRepository;
     }
 
-    @RequestMapping
+    @RequestMapping("/log/**")
     public @ResponseBody Iterable<MyEntity> getAndLogRequest(HttpServletRequest request) {
         myEntityRepository.save(new MyEntity(String.format("%s: %s: %s %s",
                 LocalDateTime.now().toString(), request.getRemoteAddr(), request.getMethod(), request.getRequestURI()
         )));
         return myEntityRepository.findAll();
+    }
+
+    @RequestMapping("/env")
+    public @ResponseBody Map<String, String> env() {
+        return System.getenv();
     }
 }
