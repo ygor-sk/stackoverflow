@@ -3,7 +3,7 @@ package sk.ygor.stackoverflow.q53326545.main
 object ExpressionsTest {
 
   def main(args: Array[String]): Unit = {
-    import sk.ygor.stackoverflow.q53326545.macros.ExampleMacro._
+    import sk.ygor.stackoverflow.q53326545.macros.ExpressionImplicits._
     val e1 = expr { x: Double => (x * 2) + (3.0 * x) }
 
     println(e1) // BinOp(+,BinOp(*,Var(x),Number(2.0)),BinOp(*,Number(3.0),Var(x)))

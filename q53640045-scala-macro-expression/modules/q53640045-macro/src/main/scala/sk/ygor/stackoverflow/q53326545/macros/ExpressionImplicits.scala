@@ -3,7 +3,7 @@ package sk.ygor.stackoverflow.q53326545.macros
 import scala.language.experimental.macros
 import scala.reflect.macros.blackbox
 
-object ExampleMacro {
+object ExpressionImplicits {
 
   def expr(expr: AnyRef): Expression = macro expr_impl
 
